@@ -41,9 +41,33 @@ and roofs based on intensity data that has been interpolated using three differe
 ##### classification problem
 C classes, d-dim feature x.  The posterior probability of a data sample x belonging to a particular class i can be computed using Bayes rule as:
 
-                                                            P(i|x) = p(x|i) * P(i) / p(x)
-                                                            p(x) = sum<p(x|i)P(i)>, P(i) is the prior probability of class
-it is usualy safe to set P(i) equal to 1/C for all class i, so next is determine the class-density probablity p(x|i). That's what Mixture Model do!
+    P(i|x) = p(x|i) * P(i) / p(x)
+    p(x) = sum<p(x|i)P(i)>, P(i) is the prior probability of class
+it is usualy safe to set P(i) equal to 1/C for all class i, so next is determine the class-density probablity p(x|i). 
+
+That's what Mixture Model do!
+A mixture model consists of linear combinations of M basis functions. For example a Gaus- sian mixture can be expressed as:
+![image](https://github.com/lh0616/lh0616.github.io/tree/master/_posts/_post_imgs/lidar_based_landcover_classification/img1.png)
+
+##### used feature
++ Normalized Height (H): The LiDAR data is normalized by subtracting the USGS DEM elevation
++ Height Variation (hvar): include standard deviation, absolute deviation from the mean, and the difference between the 
+maximum and mini- mum height values, select the last one.
++ Multiple Returns (diff): If the transmitted laser signal hits a hard surface such as terrain or the middle of a building roof,
+there is only one return. However, if the laser pulse hits the leaves or branches of trees or even the boundaries of roofs, 
+there are at least two recorded returns, one from the top of the tree or roof and the other from the ground.
++ Luminance (L) from the gray-scale aerial image. 
++ Intensity (I):
+
+##### results
+![image](https://github.com/lh0616/lh0616.github.io/tree/master/_posts/_post_imgs/lidar_based_landcover_classification/result.png)
+
+considering our own conditions, Intensity + H + hvar may be an option.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+###Aerial Lidar Data Classification using Expectation-Maximization
 
 
 
