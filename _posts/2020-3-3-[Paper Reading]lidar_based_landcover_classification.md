@@ -40,14 +40,15 @@ and roofs based on intensity data that has been interpolated using three differe
 #### Proposed Method
 ##### classification problem
 C classes, d-dim feature x.  The posterior probability of a data sample x belonging to a particular class i can be computed using Bayes rule as:
-
-    P(i|x) = p(x|i) * P(i) / p(x)
-    p(x) = sum<p(x|i)P(i)>, P(i) is the prior probability of class
+   
+    <p>P(i|x) = p(x|i) * P(i) / p(x)<p>
+    <p>p(x) = sum<p(x|i)P(i)>, P(i) is the prior probability of class<p>
 it is usualy safe to set P(i) equal to 1/C for all class i, so next is determine the class-density probablity p(x|i). 
 
 That's what Mixture Model do!
 A mixture model consists of linear combinations of M basis functions. For example a Gaus- sian mixture can be expressed as:
-![image](https://github.com/lh0616/lh0616.github.io/tree/master/_posts/_post_imgs/lidar_based_landcover_classification/img1.png)
+
+![image](https://github.com/lh0616/lh0616.github.io/blob/master/_posts/_post_imgs/lidar_based_landcover_classification/img1.png)
 
 ##### used feature
 + Normalized Height (H): The LiDAR data is normalized by subtracting the USGS DEM elevation
@@ -60,7 +61,8 @@ there are at least two recorded returns, one from the top of the tree or roof an
 + Intensity (I):
 
 ##### results
-![image](https://github.com/lh0616/lh0616.github.io/tree/master/_posts/_post_imgs/lidar_based_landcover_classification/result.png)
+
+![image](https://github.com/lh0616/lh0616.github.io/blob/master/_posts/_post_imgs/lidar_based_landcover_classification/result.png)
 
 considering our own conditions, Intensity + H + hvar may be an option.
 
@@ -68,6 +70,11 @@ considering our own conditions, Intensity + H + hvar may be an option.
 --------------------------------------------------------------------------------------------------------------------------------------
 
 ###Aerial Lidar Data Classification using Expectation-Maximization
+####Abstract
++ based the Expectation-Maximization (EM) algorithm, used  five features (height, height variation, normal variation, 
+lidar return intensity, and image intensity) to classify 3D aerial lidar scattered height data into four categories: 
+road, grass, buildings, and trees. if lidar only, merge road and grass.
++ we use EM to find maximum-likelihood estimates (MLEs) of the parameters in a Mixture of Gaussians (MoG) model for each class.
 
 
 
